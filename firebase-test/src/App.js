@@ -9,6 +9,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 function App() {
 	const authentication = getAuth();
 	const [ auth, setAuth ] = useState(false || window.localStorage.getItem('auth') === 'true');
+	console.log('auth from home', auth);
 	const [ token, setToken ] = useState();
 	const [ userName, setUserName ] = useState('');
 	// const [ user, loading, error ] = useAuthState(auth);
@@ -42,19 +43,22 @@ function App() {
 
 	return (
 		<div className="App">
-			<div>
-				{userName === null ? null : <h3>Hello {userName}</h3>}
+			{auth ? (
+				<div>
+					{userName === null ? null : <h3>Hello {userName}</h3>}
 
-				<Dashboard />
-				<ListOfTodo token={token} />
-				<LogOut setAuth={setAuth} />
-			</div>
-			<LoginPage
-				authentication={authentication}
-				setAuth={setAuth}
-				setToken={setToken}
-				setUserName={setUserName}
-			/>
+					<Dashboard />
+					<ListOfTodo token={token} />
+					<LogOut setAuth={setAuth} />
+				</div>
+			) : (
+				<LoginPage
+					authentication={authentication}
+					setAuth={setAuth}
+					setToken={setToken}
+					setUserName={setUserName}
+				/>
+			)}
 		</div>
 	);
 }
