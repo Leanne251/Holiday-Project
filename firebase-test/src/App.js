@@ -13,21 +13,24 @@ function App() {
 	const [ userName, setUserName ] = useState('');
 	// const [ user, loading, error ] = useAuthState(auth);
 
-	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(authentication, async (user) => {
-			if (user) {
-				console.log('user app', user);
-				setAuth(true);
-				window.localStorage.setItem('auth', 'true');
-				const userToken = await user.getIdToken();
-				console.log('userToken app page', userToken); // accessToken
-				console.log('user.id', user.uid); // uid
-				setToken(userToken);
-				setUserName(user.displayName);
-			}
-		});
-		return unsubscribe;
-	}, []);
+	useEffect(
+		() => {
+			const unsubscribe = onAuthStateChanged(authentication, async (user) => {
+				if (user) {
+					console.log('user app', user);
+					setAuth(true);
+					window.localStorage.setItem('auth', 'true');
+					const userToken = await user.getIdToken();
+					console.log('userToken app page', userToken); // accessToken
+					console.log('user.id', user.uid); // uid
+					setToken(userToken);
+					setUserName(user.displayName);
+				}
+			});
+			return unsubscribe;
+		},
+		[ authentication ]
+	);
 
 	// const navigate = useNavigate();
 	// useEffect(
