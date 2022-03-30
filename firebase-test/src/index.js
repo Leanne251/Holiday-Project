@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './firebase-config';
+import { app } from './firebase-config';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<App app={app} />
 	</React.StrictMode>,
 	document.getElementById('root')
 );
