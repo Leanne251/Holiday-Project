@@ -42,22 +42,19 @@ function App() {
 
 	return (
 		<div className="App">
-			{auth ? (
-				<div>
-					{userName === null ? null : <h3>Hello {userName}</h3>}
+			<div>
+				{userName === null ? null : <h3>Hello {userName}</h3>}
 
-					<Dashboard />
-					<ListOfTodo token={token} />
-					<LogOut setAuth={setAuth} />
-				</div>
-			) : (
-				<LoginPage
-					authentication={authentication}
-					setAuth={setAuth}
-					setToken={setToken}
-					setUserName={setUserName}
-				/>
-			)}
+				<Dashboard />
+				<ListOfTodo token={token} />
+				<LogOut setAuth={setAuth} />
+			</div>
+			<LoginPage
+				authentication={authentication}
+				setAuth={setAuth}
+				setToken={setToken}
+				setUserName={setUserName}
+			/>
 		</div>
 	);
 }
