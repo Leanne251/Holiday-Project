@@ -22,4 +22,14 @@ Then once signed in go to Dashboard.
 - Allow the user to add this holiday to their 'saved' holidays
 - Allow the user to create their own holiday 
 
+# Things I've learned
+
+- When deploying to Netlify, put the folder root in the base and then the folder/build in the publish box! 
+e.g Base: firebase-text 
+    Publish: firebase-test/build
+
+- When using .env, Netlify can't access these through git hub so you need to put them into Netlify directly! 
+
+
+
 

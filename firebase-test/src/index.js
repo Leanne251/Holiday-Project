@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom';
 import { app } from './firebase-config';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ForgotPassword from './components/LoginPage/ForgotPassword';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 ReactDOM.render(
-	<React.StrictMode>
-		<App app={app} />
-	</React.StrictMode>,
+	<BrowserRouter>
+		<Routes>
+			<Route exact path="/forgotpassword" element={<ForgotPassword />} />
+			<Route exact path="/" element={<App />} />
+		</Routes>
+	</BrowserRouter>,
 	document.getElementById('root')
 );
 
