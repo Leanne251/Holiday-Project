@@ -1,0 +1,14 @@
+.SignInBox {
+	width: 10em;
+	height: 6em;
+	margin: auto;
+}
+
+.flexBox {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: stretch;
+}
