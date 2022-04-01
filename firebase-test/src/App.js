@@ -6,8 +6,6 @@ import LogOut from './components/LogOut/LogOut';
 import Dashboard from './components/Dashboard/Dashboard';
 import LoginPage from './components/LoginPage/LoginPage';
 
-export const tokenWrapper = React.createContext();
-
 function App() {
 	const authentication = getAuth();
 	const [ auth, setAuth ] = useState(false || window.localStorage.getItem('auth') === 'true');
@@ -15,11 +13,6 @@ function App() {
 	const [ token, setToken ] = useState();
 	const [ userName, setUserName ] = useState('');
 	const [ uid, setUid ] = useState('');
-
-	const IDTokens = {
-		authToken: token,
-		userId: uid
-	};
 
 	useEffect(
 		() => {
@@ -29,7 +22,7 @@ function App() {
 					setAuth(true);
 					window.localStorage.setItem('auth', 'true');
 					const userToken = await user.getIdToken();
-					// sessionStorage.setItem('Auth Token', userToken);
+					sessionStorage.setItem('Auth Token', userToken);
 					console.log('userToken app page', userToken); // accessToken
 					console.log('user.id', user.uid); // uid
 					setToken(userToken);
@@ -44,22 +37,20 @@ function App() {
 
 	return (
 		<div className="App">
-			<tokenWrapper.Provider value={IDTokens}>
-				{auth ? (
-					<div>
-						<Dashboard token={token} userName={userName} />
+			{auth ? (
+				<div>
+					<Dashboard token={token} userName={userName} />
 
-						<LogOut setAuth={setAuth} />
-					</div>
-				) : (
-					<LoginPage
-						authentication={authentication}
-						setAuth={setAuth}
-						setToken={setToken}
-						setUserName={setUserName}
-					/>
-				)}
-			</tokenWrapper.Provider>
+					<LogOut setAuth={setAuth} />
+				</div>
+			) : (
+				<LoginPage
+					authentication={authentication}
+					setAuth={setAuth}
+					setToken={setToken}
+					setUserName={setUserName}
+				/>
+			)}
 		</div>
 	);
 }

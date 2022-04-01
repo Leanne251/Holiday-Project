@@ -18,6 +18,7 @@
 		"dev": "nodemon  -r dotenv/config --experimental-json-modules src/server.js",
 		"start": "node  -r dotenv/config --experimental-json-modules src/server.js",
 		"createTable": "node -r dotenv/config ./db/scripts/createTable",
+		"createUserDataTable": "node -r dotenv/config ./db/scripts/createUserDataTable",
 		"populateTable": "node -r dotenv/config ./db/scripts/populateTable"
 	},
 	"keywords": [],

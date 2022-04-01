@@ -1,10 +1,14 @@
 import { useState } from 'react';
+import { getAuth } from 'firebase/auth';
 
 // useReducer to reduce amout of useStates for the form?
 
 function AddAHoliday() {
+	const auth = getAuth();
+	const userID = auth.currentUser.uid;
+
 	const [ holidayData, setHolidayData ] = useState({
-		user_id: 1,
+		user_id: userID,
 		destination: '',
 		style: '',
 		hotel: ''
@@ -23,23 +27,18 @@ function AddAHoliday() {
 	}
 
 	async function postData() {
+		console.log('holiday data', holidayData);
 		let authToken = sessionStorage.getItem('Auth Token');
 		console.log('authToken from Add A Holiday', authToken);
 		const response = await fetch('http://localhost:5000/holidays/', {
 			method: 'POST',
-			mode: 'cors', // no-cors, *cors, same-origin
-			// cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-			// credentials: 'same-origin', // include, *same-origin, omit
+			mode: 'cors',
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: 'Bearer ' + authToken
-				// 'Content-Type': 'application/x-www-form-urlencoded',
 			},
-			// redirect: 'follow', // manual, *follow, error
-			// referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-			body: JSON.stringify(holidayData) // body data type must match "Content-Type" header});
+			body: JSON.stringify(holidayData)
 		});
-		console.log('response from post page', response);
 	}
 
 	return (
