@@ -1,8 +1,10 @@
 {
 	"dependencies": {
 		"cors": "^2.8.5",
+		"dotenv": "^16.0.0",
 		"express": "^4.17.3",
-		"firebase-admin": "^10.0.2"
+		"firebase-admin": "^10.0.2",
+		"pg": "^8.7.3"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.15"
@@ -13,8 +15,10 @@
 	"type": "module",
 	"resolveJsonModule": true,
 	"scripts": {
-		"dev": "nodemon  --experimental-json-modules src/server.js",
-		"start": "node  --experimental-json-modules src/server.js"
+		"dev": "nodemon  -r dotenv/config --experimental-json-modules src/server.js",
+		"start": "node  -r dotenv/config --experimental-json-modules src/server.js",
+		"createTable": "node -r dotenv/config ./db/scripts/createTable",
+		"populateTable": "node -r dotenv/config ./db/scripts/populateTable"
 	},
 	"keywords": [],
 	"author": "",

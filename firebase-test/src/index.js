@@ -4,14 +4,20 @@ import { app } from './firebase-config';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ForgotPassword from './components/LoginPage/ForgotPassword';
+import BucketList from './components/BucketList/BucketList';
+import AddAHoliday from './components/AddAHoliday/AddAHoliday';
+import NavBar from './components/NavBar/NavBar';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 ReactDOM.render(
 	<BrowserRouter>
+		<NavBar />
 		<Routes>
 			<Route exact path="/forgotpassword" element={<ForgotPassword />} />
 			<Route exact path="/" element={<App />} />
+			<Route exact path="/addaholiday" element={<AddAHoliday />} />
+			<Route exact path="/bucketlist" element={<BucketList />} />
 		</Routes>
 	</BrowserRouter>,
 	document.getElementById('root')

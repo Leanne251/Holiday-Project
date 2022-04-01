@@ -1,9 +1,28 @@
+Adventure Wish List! 
+
+A place to add info for other travellers and learn about destinations. 
+Add your favourite places to your own wish list & tick them off when you've been! 
+
+- Some computer generated holidays, then clients can add their own too. 
+- All holidays are fetched and shown to the user on log in. 
+- The holidays can be saved to the users favourites to be viewed on a seperate page. 
+- The user can add their own advice to be shown to everyone. 
+
+- Destination
+- Pictures
+- Hotels
+- Things you can do
+- Flight Time 
+- When to go
+
 # Make Fire Base Log In
 
 - Toggle between Sign Up & Sign in
 - Have Google Sign up on the Sign in toggle. 
 
 Then once signed in go to Dashboard. 
+
+-- Look at using UseContext hook so the Token & Uid is accessible throughout the app! 
 
 # Create a login page
 - Allow users to log in with Google or email / password 
@@ -15,7 +34,7 @@ Then once signed in go to Dashboard.
 
 # Create a home page
 
-- Display 9 holidays from my database on the back end,
+- Display 3 holidays from my database on the back end,
      use responsive grid format
      display cards
 - Create a search to find a specfic holiday
@@ -30,6 +49,9 @@ e.g Base: firebase-text
 
 - When using .env, Netlify can't access these through git hub so you need to put them into Netlify directly! 
 
+- REMEMBER to tell your start/dev script to look in the dotenv/config for the .env file so it can connect to the database!! 
+
+- REMEMBER you need app.use(express.json()) in your server to be able to read the body & the key values must match the values declared in your models folder. 
 
 
 
