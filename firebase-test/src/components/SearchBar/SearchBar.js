@@ -25,6 +25,7 @@ function SearchBar({ setDummyHolidays, token }) {
 			<label>Search for a destination</label>
 			<br />
 			<select onChange={(e) => setSearchTerm(e.target.value)}>
+				<option value="blank" />
 				<option value="Ibiza">Ibiza</option>
 				<option value="Thailand">Thailand</option>
 				<option value="California">California</option>

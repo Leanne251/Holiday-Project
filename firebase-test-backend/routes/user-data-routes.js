@@ -1,7 +1,16 @@
 import express from 'express';
-import { saveSelectedHoliday } from '../models/user-data-models.js';
+import { saveSelectedHoliday, usersSavedTrips } from '../models/user-data-models.js';
 
 const userRouter = express.Router();
+
+userRouter.get('/:uid', async function(req, res) {
+	const userID = req.params.uid;
+	const usersSavedHolidays = await usersSavedTrips(userID);
+	res.json({
+		success: true,
+		payload: usersSavedHolidays
+	});
+});
 
 userRouter.post('/', async function(req, res) {
 	try {

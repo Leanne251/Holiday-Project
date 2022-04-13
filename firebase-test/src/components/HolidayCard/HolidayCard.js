@@ -7,6 +7,7 @@ function HolidayCard({ holidayInfo }) {
 
 	const sendObj = {
 		user_id: userID,
+		creation_date: new Date(),
 		destination: holidayInfo.destination,
 		style: holidayInfo.style,
 		hotel: holidayInfo.hotel
@@ -31,6 +32,8 @@ function HolidayCard({ holidayInfo }) {
 			body: JSON.stringify(sendObj)
 		});
 	}
+
+	console.log(sendObj);
 
 	return (
 		<div className="holidayCard">

@@ -27,12 +27,6 @@ function Dashboard({ token, userName }) {
 
 	console.log('dummyholidays', dummyHolidays);
 
-	// if (dummyHolidays !== undefined) {
-	// 	dummyHolidays.map((dummyHoliday) => {
-	// 		<HolidayCard holidayInfo={dummyHoliday} />;
-	// 	});
-	// }
-
 	return (
 		<div>
 			<h3>{userName}, Your Adventure Awaits!</h3>

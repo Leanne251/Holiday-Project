@@ -18,6 +18,10 @@ export async function getSelectedHoliday(destination) {
 	const result = await db.query(`SELECT * FROM holidays WHERE destination ILIKE '%' || $1 || '%';`, [ destination ]);
 	return result.rows;
 }
+export async function usersOwnHolidays(userID) {
+	const result = await db.query(`SELECT * FROM holidays WHERE user_id=$1;`, [ userID ]);
+	return result.rows;
+}
 
 export async function addAHoliday({ user_id, destination, style, hotel }) {
 	const result = await db.query(

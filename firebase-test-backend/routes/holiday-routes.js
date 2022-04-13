@@ -1,10 +1,11 @@
 import express from 'express';
-import { getAllHolidays, getSelectedHoliday, addAHoliday } from '../models/holiday-models.js';
+import { getAllHolidays, getSelectedHoliday, addAHoliday, usersOwnHolidays } from '../models/holiday-models.js';
 
 const holidayRouter = express.Router();
 
 holidayRouter.get('/', async function(req, res) {
 	const destination = req.query.destination;
+	const uid = req.user.uid; // every call has this
 
 	if (destination) {
 		const reqName = await getSelectedHoliday(destination);
@@ -12,11 +13,23 @@ holidayRouter.get('/', async function(req, res) {
 			payload: reqName
 		});
 	}
+
 	const allHolidays = await getAllHolidays();
 
 	res.json({
 		success: true,
 		payload: allHolidays
+	});
+});
+
+holidayRouter.get('/:uid', async function(req, res) {
+	const userID = req.params.uid;
+	console.log('userID', userID);
+
+	const usersAddedHolidays = await usersOwnHolidays(userID);
+	res.json({
+		success: true,
+		payload: usersAddedHolidays
 	});
 });
 
