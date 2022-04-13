@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { app } from './firebase-config';
+import { app } from './firebaseConfig';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ForgotPassword from './components/LoginPage/ForgotPassword';
