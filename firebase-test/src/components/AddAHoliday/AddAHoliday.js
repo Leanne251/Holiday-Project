@@ -39,6 +39,7 @@ function AddAHoliday() {
 			},
 			body: JSON.stringify(holidayData)
 		});
+		console.log(response);
 	}
 
 	return (

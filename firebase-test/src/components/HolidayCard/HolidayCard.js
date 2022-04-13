@@ -31,6 +31,7 @@ function HolidayCard({ holidayInfo }) {
 			},
 			body: JSON.stringify(sendObj)
 		});
+		console.log('response to Holiday Card', response);
 	}
 
 	console.log(sendObj);

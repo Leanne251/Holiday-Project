@@ -11,7 +11,7 @@ function Dashboard({ token, userName }) {
 				getDummyHolidays(token);
 			}
 		},
-		[ token, userName ]
+		[ token, userName, getDummyHolidays ]
 	);
 
 	async function getDummyHolidays() {

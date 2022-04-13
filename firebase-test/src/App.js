@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
+
 import LogOut from './components/LogOut/LogOut';
 import Dashboard from './components/Dashboard/Dashboard';
 import LoginPage from './components/LoginPage/LoginPage';
@@ -12,7 +12,7 @@ function App() {
 	console.log('auth from home', auth);
 	const [ token, setToken ] = useState();
 	const [ userName, setUserName ] = useState('');
-	const [ uid, setUid ] = useState('');
+	// const [ uid, setUid ] = useState('');
 
 	useEffect(
 		() => {
@@ -27,7 +27,7 @@ function App() {
 					console.log('user.id', user.uid); // uid
 					setToken(userToken);
 					setUserName(user.displayName);
-					setUid(user.uid);
+					// setUid(user.uid);
 				}
 			});
 			return unsubscribe;
