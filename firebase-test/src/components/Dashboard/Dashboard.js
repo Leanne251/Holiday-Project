@@ -8,10 +8,12 @@ function Dashboard({ token, userName }) {
 	useEffect(
 		() => {
 			if (token && userName) {
-				getDummyHolidays(token);
+				() => {
+					getDummyHolidays(token);
+				};
 			}
 		},
-		[ token, userName, getDummyHolidays ]
+		[ token, userName ]
 	);
 
 	async function getDummyHolidays() {
