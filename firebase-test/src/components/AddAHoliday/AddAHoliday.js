@@ -30,7 +30,7 @@ function AddAHoliday() {
 		console.log('holiday data', holidayData);
 		let authToken = sessionStorage.getItem('Auth Token');
 		console.log('authToken from Add A Holiday', authToken);
-		const response = await fetch('http://localhost:5000/holidays/', {
+		const response = await fetch('https://april-firebase.herokuapp.com/holidays', {
 			method: 'POST',
 			mode: 'cors',
 			headers: {
