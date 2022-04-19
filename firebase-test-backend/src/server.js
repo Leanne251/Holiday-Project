@@ -6,7 +6,10 @@ import router from '../routes/todos-routes.js';
 import userRouter from '../routes/user-data-routes.js';
 
 const app = express();
-const port = 5000;
+// const port = 5000;
+
+const port = normalizePort(process.env.PORT || '5000');
+app.set('port', port);
 
 app.use(express.json());
 app.use(cors());
