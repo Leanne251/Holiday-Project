@@ -54,4 +54,20 @@ e.g Base: firebase-text
 - REMEMBER you need app.use(express.json()) in your server to be able to read the body & the key values must match the values declared in your models folder. 
 
 
+MONOREPO, 
+DEPLOYING HEROKU VIA CLI 
+
+login to Heroku 
+create the remote repo in the root, as directed in the set up
+git remote -a [firebase-app-name]
+Then if there is a sub domain push to that domain using the subtree
+git subtree push --prefix firebase-test-backend heroku main
+... specify the subfolder you want to push to the remote
+
+- check the config variables (connection variables), these need adding into Heroku. 
+- Use environment variables. 
+- check the logs Heroku logs -t
+- On this occasion the port also needed changing to an environment variable given by express /Heroku? 
+
+
 
