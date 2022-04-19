@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
+import NavBar from '../NavBar/NavBar';
 
 function BucketList() {
 	const [ userHolidays, setUserHolidays ] = useState();
@@ -50,6 +51,7 @@ function BucketList() {
 
 	return (
 		<div>
+			<NavBar />
 			<h2>Trip List</h2>
 			<h4>Trips I've Submitted </h4>
 			{userHolidays ? userHolidays.map((element) => <p>{element.destination}</p>) : null}

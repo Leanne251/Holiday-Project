@@ -1,5 +1,6 @@
 import React from 'react';
 import { getAuth } from 'firebase/auth';
+import { Box, Image, Badge, Button } from '@chakra-ui/react';
 
 function HolidayCard({ holidayInfo }) {
 	const auth = getAuth();
@@ -37,14 +38,31 @@ function HolidayCard({ holidayInfo }) {
 	console.log(sendObj);
 
 	return (
-		<div className="holidayCard">
-			<div>
+		<Box maxW="md" borderWidth="2px" borderRadius="lg" overflow="hidden">
+			<Image />
+
+			<Box p="6">
+				<Box display="flex" alignItems="baseline">
+					<Badge borderRadius="full" px="2" colorScheme="teal">
+						New
+					</Badge>
+					<Box
+						color="gray.500"
+						fontWeight="semibold"
+						letterSpacing="wide"
+						fontSize="xs"
+						textTransform="uppercase"
+						ml="2"
+					>
+						Luxury Stay!
+					</Box>
+				</Box>
 				<h4> {holidayInfo.destination}</h4>
 				<p> {holidayInfo.style}</p>
 				<p>{holidayInfo.hotel}</p>
-				<button onClick={sendToBucketList}>Save to Bucket List</button>
-			</div>
-		</div>
+				<Button onClick={sendToBucketList}>Save to Bucket List</Button>
+			</Box>
+		</Box>
 	);
 }
 

@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
-
+import NavBar from './components/NavBar/NavBar';
 import LogOut from './components/LogOut/LogOut';
 import Dashboard from './components/Dashboard/Dashboard';
 import LoginPage from './components/LoginPage/LoginPage';
@@ -39,6 +39,8 @@ function App() {
 		<div className="App">
 			{auth ? (
 				<div>
+					<NavBar />
+
 					<Dashboard token={token} userName={userName} />
 
 					<LogOut setAuth={setAuth} />

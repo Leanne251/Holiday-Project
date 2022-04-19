@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
+import NavBar from '../NavBar/NavBar';
 
 // useReducer to reduce amout of useStates for the form?
 
@@ -44,6 +45,7 @@ function AddAHoliday() {
 
 	return (
 		<div>
+			<NavBar />
 			<h3>Add A Holiday</h3>
 			<h4>Had a great adventure? Share it with others!</h4>
 			<form onSubmit={sendData}>

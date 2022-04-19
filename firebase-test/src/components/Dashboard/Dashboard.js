@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import HolidayCard from '../HolidayCard/HolidayCard';
 import SearchBar from '../SearchBar/SearchBar';
+import { Heading, SimpleGrid, Center, Container, Box } from '@chakra-ui/react';
 
 function Dashboard({ token, userName }) {
 	const [ dummyHolidays, setDummyHolidays ] = useState();
@@ -28,17 +29,24 @@ function Dashboard({ token, userName }) {
 	console.log('dummyholidays', dummyHolidays);
 
 	return (
-		<div>
-			<h3>{userName}, Your Adventure Awaits!</h3>
+		<Box w="100%">
+			<Heading as="h2" size="md">
+				{userName}, Your Adventure Awaits!
+			</Heading>
 			<SearchBar token={token} setDummyHolidays={setDummyHolidays} />
-			{dummyHolidays !== undefined ? (
-				dummyHolidays.map((dummyHoliday) => (
-					<div>
-						<HolidayCard key={dummyHoliday.id} holidayInfo={dummyHoliday} />
-					</div>
-				))
-			) : null}
-		</div>
+
+			<Center>
+				<Box>
+					<SimpleGrid columns={[ 1, 4, 6 ]} spacing="40px">
+						{dummyHolidays !== undefined ? (
+							dummyHolidays.map((dummyHoliday) => (
+								<HolidayCard key={dummyHoliday.id} holidayInfo={dummyHoliday} />
+							))
+						) : null}
+					</SimpleGrid>
+				</Box>
+			</Center>
+		</Box>
 	);
 }
 
