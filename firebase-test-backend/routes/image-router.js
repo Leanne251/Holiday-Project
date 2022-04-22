@@ -1,14 +1,14 @@
 import express from 'express';
-import cloud from '../utiles/cloudinary.js';
+import { cloud } from '../src/config/firebase-config.js';
 
 const imageRouter = express.Router();
+console.log(cloud);
 
 imageRouter.post('/', async (req, res) => {
 	try {
 		const fileStr = req.body.data;
-		const uploadedResponse = await cloud.uploader.upload(fileStr, {
-			upload_preset: 'dev_setups'
-		});
+		console.log('fileStr', fileStr);
+		const uploadedResponse = await cloud.uploader.upload(fileStr, {});
 		console.log('fileStr', fileStr);
 		console.log('uploadedresponse', uploadedResponse);
 		res.json({
@@ -19,18 +19,5 @@ imageRouter.post('/', async (req, res) => {
 		res.status(500).json({ err: 'something went wrong' });
 	}
 });
-
-// holidayRouter.post('/', async function(req, res) {
-// 	try {
-// 		const body = req.body;
-// 		const newHoliday = await addAHoliday(body);
-// 		res.json({
-// 			success: true,
-// 			payload: newHoliday
-// 		});
-// 	} catch (error) {
-// 		res.json({ success: false, message: error });
-// 	}
-// });
 
 export default imageRouter;
