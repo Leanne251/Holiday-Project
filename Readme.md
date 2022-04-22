@@ -73,6 +73,8 @@ REMEMBER!!!!
 If the website is deployed, you are running the server through Heroku, so it has to be updated before the new changes will work!!! 
 You have done this before!!! 
 
+ALSO!!! ENV variables must be posted to your deployment cloud. Otherwise they can't access them!! 
+
 DESIGN
 
 Chakra - creating responsive Nav Bar. 
