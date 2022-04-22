@@ -1,17 +1,22 @@
 import express from 'express';
+import cloud from '../utiles/cloudinary.js';
 
 const imageRouter = express.Router();
 
-imageRouter.post('/', (req, res) => {
+imageRouter.post('/', async (req, res) => {
 	try {
 		const fileStr = req.body.data;
+		const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
+			upload_preset: 'dev_setups'
+		});
 		console.log('fileStr', fileStr);
+		console.log('uploadedresponse', uploadedResponse);
 		res.json({
-			success: true,
-			payload: fileStr
+			msg: 'YAY'
 		});
 	} catch (err) {
 		console.error(err);
+		res.status(500).json({ err: 'something went wrong' });
 	}
 });
 
