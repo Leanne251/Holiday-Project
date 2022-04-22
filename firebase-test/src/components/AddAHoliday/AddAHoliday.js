@@ -1,12 +1,74 @@
 import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import NavBar from '../NavBar/NavBar';
+import { Button } from '@chakra-ui/react';
 
 // useReducer to reduce amout of useStates for the form?
 
 function AddAHoliday() {
 	const auth = getAuth();
-	const userID = auth.currentUser.uid;
+	let userID = '';
+	if (auth) {
+		userID = auth.currentUser.uid;
+	}
+	let authToken = sessionStorage.getItem('Auth Token');
+
+	const [ previewSource, setPreviewSource ] = useState();
+	const [ fileInputState, setFileInputState ] = useState('');
+	const [ selectedFile, setSelectedFile ] = useState('');
+
+	function handleFileInput(e) {
+		const file = e.target.files[0];
+		previewFile(file);
+	}
+
+	function previewFile(file) {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onloadend = () => {
+			setPreviewSource(reader.result);
+		};
+	}
+
+	function handleSubmitFile(e) {
+		e.preventDefault();
+		if (!previewSource) return;
+		uploadImage(previewSource);
+	}
+
+	async function postData() {
+		console.log('holiday data', holidayData);
+
+		console.log('authToken from Add A Holiday', authToken);
+		const response = await fetch('https://april-firebase.herokuapp.com/holidays', {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + authToken
+			},
+			body: JSON.stringify(holidayData)
+		});
+		console.log(response);
+	}
+
+	// previewSource is a base64EncodedImage type.
+	async function uploadImage(previewSource) {
+		try {
+			const response = await fetch('https://april-firebase.herokuapp.com/api/upload', {
+				method: 'POST',
+				mode: 'cors',
+				headers: {
+					'Content-type': 'application/json',
+					Authorization: 'Bearer ' + authToken
+				},
+				body: JSON.stringify({ data: previewSource })
+			});
+			console.log(response);
+		} catch (err) {
+			console.error(err);
+		}
+	}
 
 	const [ holidayData, setHolidayData ] = useState({
 		user_id: userID,
@@ -29,7 +91,7 @@ function AddAHoliday() {
 
 	async function postData() {
 		console.log('holiday data', holidayData);
-		let authToken = sessionStorage.getItem('Auth Token');
+
 		console.log('authToken from Add A Holiday', authToken);
 		const response = await fetch('https://april-firebase.herokuapp.com/holidays', {
 			method: 'POST',
@@ -57,6 +119,20 @@ function AddAHoliday() {
 				<input type="text" name="hotel" value={holidayData.hotel} onChange={getFormData} />
 				<button>Post</button>
 			</form>
+
+			<h1>Upload</h1>
+			<form onSubmit={handleSubmitFile}>
+				<input
+					type="file"
+					name="image"
+					onChange={handleFileInput}
+					value={fileInputState}
+					className="form-input"
+				/>
+				<Button type="submit">Submit</Button>
+			</form>
+			{/* Can use && here instead of if */}
+			{previewSource && <img src={previewSource} alt="chosen image" style={{ height: '300px' }} />}
 		</div>
 	);
 }
