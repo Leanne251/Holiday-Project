@@ -30,8 +30,8 @@ export const theme = extendTheme({
 		}
 	},
 	fonts: {
-		body: 'system-ui, sans-serif',
-		heading: 'Georgia, serif',
+		body: 'karla, sans-serif',
+		heading: 'Rubik, sans-serif',
 		mono: 'Menlo, monospace'
 	},
 	fontSizes: {
@@ -97,7 +97,8 @@ export const theme = extendTheme({
 			fontSize: [ '60px', '48px' ],
 			fontWeight: 'semibold',
 			lineHeight: '110%',
-			letterSpacing: '-1%'
+			letterSpacing: '10%',
+			color: 'red.500'
 		}
 	}
 });

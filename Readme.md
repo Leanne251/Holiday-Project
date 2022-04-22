@@ -70,4 +70,14 @@ git subtree push --prefix firebase-test-backend heroku main
 - On this occasion the port also needed changing to an environment variable given by express /Heroku? 
 
 
+DESIGN
+
+Chakra - creating responsive Nav Bar. 
+- use the array to specify what displays at what break point, either display:Flex or display: none, depending on screen size. 
+
+- Import icons and useState to open & close them with an onClick function 
+
+- Easily implement a light * dark mode with the switch toggle and colorModeToggle hook
+
+
 

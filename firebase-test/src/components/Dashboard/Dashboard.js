@@ -29,10 +29,8 @@ function Dashboard({ token, userName }) {
 	console.log('dummyholidays', dummyHolidays);
 
 	return (
-		<Box w="100%">
-			<Heading as="h2" size="md">
-				{userName}, Your Adventure Awaits!
-			</Heading>
+		<Box w="100%" pos="relative">
+			<Heading as="h2">{userName}, Your Adventure Awaits!</Heading>
 			<SearchBar token={token} setDummyHolidays={setDummyHolidays} />
 
 			<Center>

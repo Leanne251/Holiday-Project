@@ -8,6 +8,8 @@ import AddAHoliday from './components/AddAHoliday/AddAHoliday';
 import NavBar from './components/NavBar/NavBar';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from './styles/theme';
+import '@fontsource/karla';
+import '@fontsource/rubik';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
