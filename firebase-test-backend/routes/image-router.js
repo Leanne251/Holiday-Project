@@ -4,9 +4,8 @@ const imageRouter = express.Router();
 
 imageRouter.post('/', (req, res) => {
 	try {
-		console.log(req.body);
 		const fileStr = req.body.data;
-		console.log(fileStr);
+		console.log('fileStr', fileStr);
 		res.json({
 			success: true,
 			payload: fileStr

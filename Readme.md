@@ -69,6 +69,9 @@ git subtree push --prefix firebase-test-backend heroku main
 - check the logs Heroku logs -t
 - On this occasion the port also needed changing to an environment variable given by express /Heroku? 
 
+REMEMBER!!!!
+If the website is deployed, you are running the server through Heroku, so it has to be updated before the new changes will work!!! 
+You have done this before!!! 
 
 DESIGN
 
