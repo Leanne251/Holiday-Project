@@ -11,9 +11,9 @@ imageRouter.post('/', async (req, res) => {
 		console.log('fileStr', fileStr);
 		// const uploadedResponse = await cloudinary.v2.uploader.upload(fileStr, {});
 		// console.log('uploadedresponse', uploadedResponse);
-		// res.json({
-		// 	msg: 'YAY'
-		// });
+		res.json({
+			msg: 'YAY'
+		});
 	} catch (err) {
 		console.error(err);
 		res.status(500).json({ err: 'something went wrong' });
