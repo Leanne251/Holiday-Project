@@ -7,6 +7,10 @@ imageRouter.post('/', (req, res) => {
 		console.log(req.body);
 		const fileStr = req.body.data;
 		console.log(fileStr);
+		res.json({
+			success: true,
+			payload: fileStr
+		});
 	} catch (err) {
 		console.error(err);
 	}

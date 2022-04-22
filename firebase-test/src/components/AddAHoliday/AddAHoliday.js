@@ -55,7 +55,7 @@ function AddAHoliday() {
 	// previewSource is a base64EncodedImage type.
 	async function uploadImage(previewSource) {
 		try {
-			const response = await fetch('https://april-firebase.herokuapp.com/api/upload', {
+			const response = await fetch('https://april-firebase.herokuapp.com/upload', {
 				method: 'POST',
 				mode: 'cors',
 				headers: {
