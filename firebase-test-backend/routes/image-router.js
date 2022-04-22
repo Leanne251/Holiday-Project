@@ -6,7 +6,7 @@ const imageRouter = express.Router();
 imageRouter.post('/', async (req, res) => {
 	try {
 		const fileStr = req.body.data;
-		const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
+		const uploadedResponse = await cloud.uploader.upload(fileStr, {
 			upload_preset: 'dev_setups'
 		});
 		console.log('fileStr', fileStr);
