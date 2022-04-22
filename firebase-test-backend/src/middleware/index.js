@@ -1,4 +1,4 @@
-import admin from '../config/firebase-config.js';
+import { setUp } from '../config/firebase-config.js';
 
 async function firebaseAuth(req, res, next) {
 	if (req.headers.authorization) {

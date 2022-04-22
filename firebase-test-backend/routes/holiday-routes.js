@@ -4,6 +4,7 @@ import { getAllHolidays, getSelectedHoliday, addAHoliday, usersOwnHolidays } fro
 const holidayRouter = express.Router();
 
 holidayRouter.get('/', async function(req, res) {
+	console.log('holidays');
 	const destination = req.query.destination;
 	const uid = req.user.uid; // every call has this
 

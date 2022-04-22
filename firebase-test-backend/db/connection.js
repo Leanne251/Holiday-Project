@@ -1,5 +1,5 @@
 import pg from 'pg';
-import { connectionString } from '../config.js';
+import { connectionString } from '../src/config/firebase-config.js';
 
 const db = new pg.Pool({
 	connectionString,

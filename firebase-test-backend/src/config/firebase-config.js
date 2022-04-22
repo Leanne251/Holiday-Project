@@ -1,16 +1,16 @@
-// import admin from 'firebase-admin';
-// // import serviceAccount from './serviceAccount.json';
-
-// // admin.initializeApp({
-// // 	credential: admin.credential.cert(serviceAccount)
-// // });
-
-// export default admin;
-
 import admin from 'firebase-admin';
+import * as cloudinary from 'cloudinary';
 
-admin.initializeApp({
+export const setUp = admin.initializeApp({
 	credential: admin.credential.cert(JSON.parse(process.env.serviceAccountKey))
 });
 
-export default admin;
+export const cloud = cloudinary.config({
+	cloud_name: process.env.CLOUDINARY_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+export const connectionString = process.env.DATABASE_URL;
+
+const env = process.env.NODE.ENV;
