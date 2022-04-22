@@ -4,7 +4,7 @@ async function firebaseAuth(req, res, next) {
 	if (req.headers.authorization) {
 		const token = req.headers.authorization.split(' ')[1];
 		try {
-			const decodedToken = await admin.auth().verifyIdToken(token);
+			const decodedToken = await setUp.auth().verifyIdToken(token);
 			if (decodedToken) {
 				req.user = decodedToken;
 				return next();

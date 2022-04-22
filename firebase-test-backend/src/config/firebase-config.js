@@ -13,4 +13,4 @@ export const cloud = cloudinary.config({
 
 export const connectionString = process.env.DATABASE_URL;
 
-const env = process.env.NODE.ENV;
+// const env = process.env.NODE.ENV;
