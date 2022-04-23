@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import NavBar from '../NavBar/NavBar';
 import { Button } from '@chakra-ui/react';
+import GetImages from '../GetImages/GetImages';
 
 // useReducer to reduce amout of useStates for the form?
 
@@ -133,6 +134,7 @@ function AddAHoliday() {
 			</form>
 			{/* Can use && here instead of if */}
 			{previewSource && <img src={previewSource} alt="chosen image" style={{ height: '300px' }} />}
+			<GetImages />
 		</div>
 	);
 }
