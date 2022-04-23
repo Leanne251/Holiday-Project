@@ -9,8 +9,10 @@ imageRouter.post('/', async (req, res) => {
 	try {
 		const fileStr = req.body.data;
 		console.log('fileStr', fileStr);
-		const uploadedResponse = await cloudinary.uploader.upload(fileStr, {});
-		// console.log('uploadedresponse', uploadedResponse);
+		const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
+			upload_preset: 'Holiday_Project'
+		});
+		console.log('uploadedresponse', uploadedResponse);
 		res.json({
 			msg: 'YAY'
 		});
