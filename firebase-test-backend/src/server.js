@@ -6,6 +6,7 @@ import router from '../routes/todos-routes.js';
 import userRouter from '../routes/user-data-routes.js';
 import cool from 'cool-ascii-faces';
 import imageRouter from '../routes/image-router.js';
+import cloudinary from 'cloudinary';
 
 const app = express();
 // const port = 5000;
@@ -25,6 +26,16 @@ app.use('/api/todos', router);
 app.use('/holidays', holidayRouter);
 app.use('/users', userRouter);
 app.use('/upload', imageRouter);
+
+app.get('/images', async (req, res) => {
+	const { resources } = await cloudinary.search
+		.expression('folder: Holiday_Project')
+		.sort_by('public_id', 'desc')
+		.max_results(30)
+		.execute();
+	const publicIDs = resources.map((file) => file.public_id);
+	res.send(publicIDs);
+});
 
 app.listen(port, () => {
 	console.log(`sever is running on ${port}`);
