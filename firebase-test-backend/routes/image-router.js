@@ -1,6 +1,6 @@
 import express from 'express';
 import { cloud } from '../src/config/firebase-config.js';
-import cloudinary from 'cloudinary';
+import { v2 as cloudinary } from 'cloudinary';
 
 const imageRouter = express.Router();
 console.log(cloud);
@@ -9,7 +9,7 @@ imageRouter.post('/', async (req, res) => {
 	try {
 		const fileStr = req.body.data;
 		console.log('fileStr', fileStr);
-		// const uploadedResponse = await cloudinary.v2.uploader.upload(fileStr, {});
+		const uploadedResponse = await cloudinary.uploader.upload(fileStr, {});
 		// console.log('uploadedresponse', uploadedResponse);
 		res.json({
 			msg: 'YAY'
