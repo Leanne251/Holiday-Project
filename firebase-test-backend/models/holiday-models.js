@@ -29,10 +29,10 @@ export async function addAHoliday({ user_id, destination, style, hotel, image })
 	const uploadedResponse = await cloudinary.uploader.upload(image, {
 		upload_preset: 'Holiday_Project'
 	});
-	const image_URL = uploadedResponse.url;
+	const imageURL = uploadedResponse.url;
 	const result = await db.query(
 		`INSERT INTO holidays (user_id, destination, style, hotel, image_URL) VALUES ($1, $2, $3, $4, $5) RETURNING destination;`,
-		[ user_id, destination, style, hotel, image_URL ]
+		[ user_id, destination, style, hotel, imageURL ]
 	);
 
 	return result.rows;
