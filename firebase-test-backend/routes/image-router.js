@@ -13,6 +13,8 @@ imageRouter.post('/', async (req, res) => {
 			upload_preset: 'Holiday_Project'
 		});
 		console.log('uploadedresponse', uploadedResponse);
+		console.log('uploadedresponse', uploadedResponse.url);
+		console.log('uploadedresponse', uploadedResponse.secure_url);
 		res.json({
 			msg: 'YAY'
 		});
@@ -23,3 +25,6 @@ imageRouter.post('/', async (req, res) => {
 });
 
 export default imageRouter;
+
+// req.body is my object that is sent from the front end
+// i need a cloudinary_id: uploadedResponse.url
