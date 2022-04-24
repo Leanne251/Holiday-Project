@@ -37,6 +37,7 @@ holidayRouter.get('/:uid', async function(req, res) {
 holidayRouter.post('/', async function(req, res) {
 	try {
 		const body = req.body;
+		console.log('body', body);
 		const newHoliday = await addAHoliday(body);
 		res.json({
 			success: true,
