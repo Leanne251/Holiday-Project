@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import HolidayCard from '../HolidayCard/HolidayCard';
 
-function SearchBar({ setDummyHolidays, token }) {
+function SearchBar({ setAllHolidays, token }) {
 	const [ searchTerm, setSearchTerm ] = useState();
 	const [ returnedSearchTerm, setReturnedSearchTerm ] = useState();
 
 	function searchForHoliday() {
-		setDummyHolidays(undefined);
+		setAllHolidays(undefined);
 		searchHolidays(searchTerm);
 	}
 

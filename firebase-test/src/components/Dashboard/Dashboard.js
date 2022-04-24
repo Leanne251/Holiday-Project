@@ -4,18 +4,18 @@ import SearchBar from '../SearchBar/SearchBar';
 import { Heading, SimpleGrid, Center, Container, Box } from '@chakra-ui/react';
 
 function Dashboard({ token, userName }) {
-	const [ dummyHolidays, setDummyHolidays ] = useState();
+	const [ allHolidays, setAllHolidays ] = useState();
 
 	useEffect(
 		() => {
 			if (token && userName) {
-				getDummyHolidays(token);
+				fetchAllHolidays(token);
 			}
 		},
 		[ token, userName ]
 	);
 
-	async function getDummyHolidays() {
+	async function fetchAllHolidays() {
 		const response = await fetch('https://april-firebase.herokuapp.com/holidays', {
 			headers: {
 				Authorization: 'Bearer ' + token,
@@ -24,24 +24,19 @@ function Dashboard({ token, userName }) {
 		});
 		const data = await response.json();
 		console.log('response from Dashboard', data);
-		setDummyHolidays(data.payload);
+		setAllHolidays(data.payload);
 	}
-
-	console.log('dummyholidays', dummyHolidays);
 
 	return (
 		<Box w="100%" pos="relative">
 			<Heading as="h2">{userName}, Your Adventure Awaits!</Heading>
-			<SearchBar token={token} setDummyHolidays={setDummyHolidays} />
+			<SearchBar token={token} setAllHolidays={setAllHolidays} />
 
 			<Center>
 				<Box>
 					<SimpleGrid columns={[ 1, 4, 6 ]} spacing="40px">
-						{dummyHolidays !== undefined ? (
-							dummyHolidays.map((dummyHoliday) => (
-								<HolidayCard key={dummyHoliday.id} holidayInfo={dummyHoliday} />
-							))
-						) : null}
+						{allHolidays &&
+							allHolidays.map((holiday) => <HolidayCard key={holiday.id} holidayInfo={holiday} />)}
 					</SimpleGrid>
 				</Box>
 			</Center>

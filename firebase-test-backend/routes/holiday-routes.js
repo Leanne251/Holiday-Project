@@ -6,7 +6,7 @@ import { v2 as cloudinary } from 'cloudinary';
 const holidayRouter = express.Router();
 
 holidayRouter.get('/', async function(req, res) {
-	console.log('holidays');
+	console.log(req.query);
 	const destination = req.query.destination;
 	const uid = req.user.uid; // every call has this
 

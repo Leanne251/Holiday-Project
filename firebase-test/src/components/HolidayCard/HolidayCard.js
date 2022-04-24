@@ -6,6 +6,8 @@ function HolidayCard({ holidayInfo }) {
 	const auth = getAuth();
 	const userID = auth.currentUser.uid;
 
+	console.log('holidayInfo', holidayInfo);
+
 	const sendObj = {
 		user_id: userID,
 		creation_date: new Date(),
@@ -57,7 +59,7 @@ function HolidayCard({ holidayInfo }) {
 						Luxury Stay!
 					</Box>
 				</Box>
-				<img src={holidayInfo.image} alt={holidayInfo.destination} />
+				<img src={holidayInfo.image_url} alt={holidayInfo.destination} />
 				<h4> {holidayInfo.destination}</h4>
 				<p> {holidayInfo.style}</p>
 				<p>{holidayInfo.hotel}</p>

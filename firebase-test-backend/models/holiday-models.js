@@ -9,7 +9,6 @@ export const result = {
 export async function getAllHolidays() {
 	try {
 		const result = await db.query(`SELECT * FROM holidays;`);
-
 		return result.rows;
 	} catch (e) {
 		console.log('error', e);

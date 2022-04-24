@@ -5,14 +5,13 @@ async function populateTable() {
 	for (let i = 0; i < holidays.length; i++) {
 		const destination = holidays[i].destination;
 		const style = holidays[i].style;
-		const image = holidays[i].image;
 		const hotel = holidays[i].hotel;
-		const cost = holidays[i].cost;
+		const image = holidays[i].image;
 
 		const response = await db.query(
-			`INSERT INTO holidays(destination, style, image, hotel, cost) VALUES($1, $2, $3, $4, $5) 
+			`INSERT INTO holidays(destination, style, hotel, image_URL) VALUES($1, $2, $3, $4 ) 
     RETURNING destination;`,
-			[ destination, style, image, hotel, cost ]
+			[ destination, style, hotel, image ]
 		);
 		console.log(response);
 	}
