@@ -1,5 +1,7 @@
 import express from 'express';
 import { getAllHolidays, getSelectedHoliday, addAHoliday, usersOwnHolidays } from '../models/holiday-models.js';
+import { cloud } from '../src/config/firebase-config.js';
+import { v2 as cloudinary } from 'cloudinary';
 
 const holidayRouter = express.Router();
 
@@ -36,32 +38,29 @@ holidayRouter.get('/:uid', async function(req, res) {
 
 holidayRouter.post('/', async function(req, res) {
 	try {
-		const body = req.body;
-		console.log('body', body);
-		const newHoliday = await addAHoliday(body);
+		const { user_id, destination, style, hotel, image } = req.body;
+		const uploadedResponse = await cloudinary.uploader.upload(image, {
+			upload_preset: 'Holiday_Project'
+		});
+		const imageURL = uploadedResponse.url;
+		const response = addAHoliday(user_id, destination, style, hotel, imageURL);
 		res.json({
 			success: true,
-			payload: newHoliday
+			payload: response
 		});
 	} catch (error) {
 		res.json({ success: false, message: error });
 	}
 });
 
-// router.post('/', async function(req, res, next) {
-// 	console.log('post request', req.body);
-// 	try {
-// 		const body = req.body;
-
-// 		const create = await createData(body);
-
+// const { destination, style, hotel, image } = req.body;
+// 		const uploadedResponse = await cloudinary.uploader.upload(image, {
+// 			upload_preset: 'Holiday_Project'
+// 		});
+// 		const imageURL = uploadedResponse.url;
+// 		const response = postAHoliday(destination, style, hotel, imageURL);
 // 		res.json({
 // 			success: true,
-// 			payload: create
-// 		});
-// 	} catch (error) {
-// 		res.json({ success: false, message: error });
-// 	}
-// });
+// 			payload: response
 
 export default holidayRouter;
