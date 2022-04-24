@@ -32,8 +32,8 @@ export async function addAHoliday({ user_id, destination, style, hotel, image })
 	// const imageURL = uploadedResponse.url;
 	// console.log('image URL', imageURL);
 	const result = await db.query(
-		`INSERT INTO holidays (user_id, destination, style, hotel, image_URL) VALUES ($1, $2, $3, $4, $5) RETURNING destination;`,
-		[ user_id, destination, style, hotel, imageURL ]
+		`INSERT INTO holidays (user_id, destination, style, hotel) VALUES ($1, $2, $3, $4) RETURNING destination;`,
+		[ user_id, destination, style, hotel ]
 	);
 
 	return result.rows;
