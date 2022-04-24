@@ -57,6 +57,7 @@ function HolidayCard({ holidayInfo }) {
 						Luxury Stay!
 					</Box>
 				</Box>
+				<img src={holidayInfo.image} alt={holidayInfo.destination} />
 				<h4> {holidayInfo.destination}</h4>
 				<p> {holidayInfo.style}</p>
 				<p>{holidayInfo.hotel}</p>
