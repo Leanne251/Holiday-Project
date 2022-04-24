@@ -1,4 +1,6 @@
 import db from '../db/connection.js';
+// import { cloud } from '../src/config/firebase-config.js';
+import { v2 as cloudinary } from 'cloudinary';
 
 export const result = {
 	yes: 'please'
@@ -23,10 +25,14 @@ export async function usersOwnHolidays(userID) {
 	return result.rows;
 }
 
-export async function addAHoliday({ user_id, destination, style, hotel }) {
+export async function addAHoliday({ user_id, destination, style, hotel, image }) {
+	const uploadedResponse = await cloudinary.uploader.upload(image, {
+		upload_preset: 'Holiday_Project'
+	});
+	const cloudinary_url = uploadedResponse.url;
 	const result = await db.query(
-		`INSERT INTO holidays (user_id, destination, style, hotel) VALUES ($1, $2, $3, $4) RETURNING destination;`,
-		[ user_id, destination, style, hotel ]
+		`INSERT INTO holidays (user_id, destination, style, hotel, cloudinary_url) VALUES ($1, $2, $3, $4, $5) RETURNING destination;`,
+		[ user_id, destination, style, hotel, cloudinary_url ]
 	);
 
 	return result.rows;

@@ -1,0 +1,22 @@
+<mxfile host="65bd71144e">
+    <diagram id="hiWd4i5a5oB1GUUAH1GB" name="Page-1">
+        <mxGraphModel dx="427" dy="360" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Front end, create an object.&amp;nbsp;&lt;br&gt;&lt;br&gt;Destination: Ibiza&lt;br&gt;Image: 'fffff'&lt;br&gt;Price: £100&lt;br&gt;Hotel: Great Hotel" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="40" width="190" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Back End, req.body - routes&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22Front%20end%2C%20create%20an%20object.%26amp%3Bnbsp%3B%26lt%3Bbr%26gt%3B%26lt%3Bbr%26gt%3BDestination%3A%20Ibiza%26lt%3Bbr%26gt%3BImage%3A%20'fffff'%26lt%3Bbr%26gt%3BPrice%3A%20%C2%A3100%26lt%3Bbr%26gt%3BHotel%3A%20Great%20Hotel%22%20style%3D%22rounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22150%22%20y%3D%2240%22%20width%3D%22190%22%20height%3D%2290%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;&lt;br&gt;&lt;br&gt;upload the image to cloudinary and obtain the cloudinary URL&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="170" width="190" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Back End, models&amp;nbsp;&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22Front%20end%2C%20create%20an%20object.%26amp%3Bnbsp%3B%26lt%3Bbr%26gt%3B%26lt%3Bbr%26gt%3BDestination%3A%20Ibiza%26lt%3Bbr%26gt%3BImage%3A%20'fffff'%26lt%3Bbr%26gt%3BPrice%3A%20%C2%A3100%26lt%3Bbr%26gt%3BHotel%3A%20Great%20Hotel%22%20style%3D%22rounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22150%22%20y%3D%2240%22%20width%3D%22190%22%20height%3D%2290%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;&lt;br&gt;&lt;br&gt;insert object data and cloudinary URL into the data base&amp;nbsp;&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="290" width="190" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Back End, models&amp;nbsp;&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22Front%20end%2C%20create%20an%20object.%26amp%3Bnbsp%3B%26lt%3Bbr%26gt%3B%26lt%3Bbr%26gt%3BDestination%3A%20Ibiza%26lt%3Bbr%26gt%3BImage%3A%20'fffff'%26lt%3Bbr%26gt%3BPrice%3A%20%C2%A3100%26lt%3Bbr%26gt%3BHotel%3A%20Great%20Hotel%22%20style%3D%22rounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22150%22%20y%3D%2240%22%20width%3D%22190%22%20height%3D%2290%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;&lt;br&gt;&lt;br&gt;insert object data and cloudinary URL into the data base&amp;nbsp;&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="400" width="190" height="90" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

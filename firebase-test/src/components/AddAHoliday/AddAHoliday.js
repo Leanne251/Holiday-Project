@@ -16,7 +16,14 @@ function AddAHoliday() {
 
 	const [ previewSource, setPreviewSource ] = useState();
 	const [ fileInputState, setFileInputState ] = useState('');
-	const [ selectedFile, setSelectedFile ] = useState('');
+	// const [ selectedFile, setSelectedFile ] = useState('');
+	const [ holidayData, setHolidayData ] = useState({
+		user_id: userID,
+		destination: '',
+		style: '',
+		hotel: '',
+		image: ''
+	});
 
 	function handleFileInput(e) {
 		const file = e.target.files[0];
@@ -28,6 +35,7 @@ function AddAHoliday() {
 		reader.readAsDataURL(file);
 		reader.onloadend = () => {
 			setPreviewSource(reader.result);
+			setHolidayData({ ...holidayData, image: reader.result });
 		};
 	}
 
@@ -35,22 +43,6 @@ function AddAHoliday() {
 		e.preventDefault();
 		if (!previewSource) return;
 		uploadImage(previewSource);
-	}
-
-	async function postData() {
-		console.log('holiday data', holidayData);
-
-		console.log('authToken from Add A Holiday', authToken);
-		const response = await fetch('https://april-firebase.herokuapp.com/holidays', {
-			method: 'POST',
-			mode: 'cors',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: 'Bearer ' + authToken
-			},
-			body: JSON.stringify(holidayData)
-		});
-		console.log(response);
 	}
 
 	// previewSource is a base64EncodedImage type.
@@ -71,13 +63,6 @@ function AddAHoliday() {
 		}
 	}
 
-	const [ holidayData, setHolidayData ] = useState({
-		user_id: userID,
-		destination: '',
-		style: '',
-		hotel: ''
-	});
-
 	function getFormData(e) {
 		const value = e.target.value;
 		setHolidayData({ ...holidayData, [e.target.name]: value });
@@ -89,6 +74,8 @@ function AddAHoliday() {
 		e.preventDefault();
 		postData();
 	}
+
+	console.log('holiday Data1', holidayData);
 
 	async function postData() {
 		console.log('holiday data', holidayData);
@@ -118,10 +105,18 @@ function AddAHoliday() {
 				<input type="text" name="style" value={holidayData.style} onChange={getFormData} />
 				<label>Hotel</label>
 				<input type="text" name="hotel" value={holidayData.hotel} onChange={getFormData} />
+				<input
+					type="file"
+					name="image"
+					onChange={handleFileInput}
+					value={fileInputState}
+					className="form-input"
+				/>
+				{previewSource && <img src={previewSource} alt="chosen image" style={{ height: '300px' }} />}
 				<button>Post</button>
 			</form>
 
-			<h1>Upload</h1>
+			{/* <h1>Upload</h1>
 			<form onSubmit={handleSubmitFile}>
 				<input
 					type="file"
@@ -131,10 +126,10 @@ function AddAHoliday() {
 					className="form-input"
 				/>
 				<Button type="submit">Submit</Button>
-			</form>
+			</form> */}
 			{/* Can use && here instead of if */}
-			{previewSource && <img src={previewSource} alt="chosen image" style={{ height: '300px' }} />}
-			<GetImages />
+			{/* {previewSource && <img src={previewSource} alt="chosen image" style={{ height: '300px' }} />} */}
+			{/* <GetImages /> */}
 		</div>
 	);
 }
