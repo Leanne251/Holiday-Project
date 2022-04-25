@@ -18,8 +18,7 @@ function Dashboard({ token, userName }) {
 	async function fetchAllHolidays() {
 		const response = await fetch('https://april-firebase.herokuapp.com/holidays', {
 			headers: {
-				Authorization: 'Bearer ' + token,
-				'Access-Control-Allow-Origin': '*'
+				Authorization: 'Bearer ' + token
 			}
 		});
 		const data = await response.json();
