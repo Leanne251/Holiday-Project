@@ -84,5 +84,14 @@ Chakra - creating responsive Nav Bar.
 
 - Easily implement a light * dark mode with the switch toggle and colorModeToggle hook
 
+CLOUDINARY 
+
+Upload more than one image.
+
+Select the first image to be show on home page tile. 
+Save the other images so they can be seen on the more information page. 
+
+Allow the user to add their own notes about the holidays they have saved to bucket list. 
+
 
 

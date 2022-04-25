@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import HolidayCard from '../HolidayCard/HolidayCard';
 import SearchBar from '../SearchBar/SearchBar';
-import { Heading, SimpleGrid, Center, Container, Box } from '@chakra-ui/react';
+import { Heading, SimpleGrid, Center, Box } from '@chakra-ui/react';
 
 function Dashboard({ token, userName }) {
 	const [ allHolidays, setAllHolidays ] = useState();
@@ -9,23 +9,22 @@ function Dashboard({ token, userName }) {
 	useEffect(
 		() => {
 			if (token && userName) {
-				fetchAllHolidays(token);
+				async function fetchAllHolidays() {
+					const response = await fetch('https://april-firebase.herokuapp.com/holidays', {
+						headers: {
+							Authorization: 'Bearer ' + token,
+							'Access-Control-Allow-Origin': '*'
+						}
+					});
+					const data = await response.json();
+					console.log('response from Dashboard', data);
+					setAllHolidays(data.payload);
+				}
+				fetchAllHolidays();
 			}
 		},
 		[ token, userName ]
 	);
-
-	async function fetchAllHolidays() {
-		const response = await fetch('http://localhost:5000/holidays', {
-			headers: {
-				Authorization: 'Bearer ' + token,
-				'Access-Control-Allow-Origin': '*'
-			}
-		});
-		const data = await response.json();
-		console.log('response from Dashboard', data);
-		setAllHolidays(data.payload);
-	}
 
 	console.log('dummyholidays', setAllHolidays);
 

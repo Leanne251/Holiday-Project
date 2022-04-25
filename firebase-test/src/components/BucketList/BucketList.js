@@ -23,10 +23,11 @@ function BucketList() {
 	);
 
 	async function getMyHolidays(userID, token) {
-		const response = await fetch(`http://localhost:5000/holidays/${userID}`, {
+		const response = await fetch(`https://april-firebase.herokuapp.com/holidays/${userID}`, {
 			headers: {
 				Authorization: 'Bearer ' + token,
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*'
 			}
 		});
 		const data = await response.json();
@@ -34,16 +35,20 @@ function BucketList() {
 	}
 
 	async function getSavedHolidays(userID, token) {
-		const response = await fetch(`http://localhost:5000/users/${userID}`, {
+		const response = await fetch(`https://april-firebase.herokuapp.com/users/${userID}`, {
 			headers: {
 				Authorization: 'Bearer ' + token,
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*'
 			}
 		});
 
 		const data = await response.json();
+		console.log('data2', data);
 		setbucketListHolidays(data.payload);
 	}
+
+	console.log('bucketListHolidays', bucketListHolidays);
 
 	return (
 		<div>
