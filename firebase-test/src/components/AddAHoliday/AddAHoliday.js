@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import NavBar from '../NavBar/NavBar';
-import { Button } from '@chakra-ui/react';
-import GetImages from '../GetImages/GetImages';
+import { useContext } from 'react';
+import { fireBaseWrapper } from '../../App';
 
 // useReducer to reduce amout of useStates for the form?
 
 function AddAHoliday() {
-	const auth = getAuth();
-	let userID = '';
-	if (auth) {
-		userID = auth.currentUser.uid;
-	}
+	let firebase = useContext(fireBaseWrapper);
+
+	let userID = firebase.currentUser.uid;
+
 	let authToken = sessionStorage.getItem('Auth Token');
 
 	const [ previewSource, setPreviewSource ] = useState();
@@ -39,30 +38,6 @@ function AddAHoliday() {
 		};
 	}
 
-	function handleSubmitFile(e) {
-		e.preventDefault();
-		if (!previewSource) return;
-		uploadImage(previewSource);
-	}
-
-	// previewSource is a base64EncodedImage type.
-	async function uploadImage(previewSource) {
-		try {
-			const response = await fetch('https://april-firebase.herokuapp.com/upload', {
-				method: 'POST',
-				mode: 'cors',
-				headers: {
-					'Content-type': 'application/json',
-					Authorization: 'Bearer ' + authToken
-				},
-				body: JSON.stringify({ data: previewSource })
-			});
-			console.log(response);
-		} catch (err) {
-			console.error(err);
-		}
-	}
-
 	function getFormData(e) {
 		const value = e.target.value;
 		setHolidayData({ ...holidayData, [e.target.name]: value });
@@ -81,7 +56,7 @@ function AddAHoliday() {
 		console.log('holiday data', holidayData);
 
 		console.log('authToken from Add A Holiday', authToken);
-		const response = await fetch('https://april-firebase.herokuapp.com/holidays', {
+		const response = await fetch('http://localhost:5000/holidays', {
 			method: 'POST',
 			mode: 'cors',
 			headers: {

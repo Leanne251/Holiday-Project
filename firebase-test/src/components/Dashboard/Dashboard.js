@@ -16,9 +16,10 @@ function Dashboard({ token, userName }) {
 	);
 
 	async function fetchAllHolidays() {
-		const response = await fetch('https://april-firebase.herokuapp.com/holidays', {
+		const response = await fetch('http://localhost:5000/holidays', {
 			headers: {
-				Authorization: 'Bearer ' + token
+				Authorization: 'Bearer ' + token,
+				'Access-Control-Allow-Origin': '*'
 			}
 		});
 		const data = await response.json();
@@ -26,10 +27,12 @@ function Dashboard({ token, userName }) {
 		setAllHolidays(data.payload);
 	}
 
+	console.log('dummyholidays', setAllHolidays);
+
 	return (
 		<Box w="100%" pos="relative">
 			<Heading as="h2">{userName}, Your Adventure Awaits!</Heading>
-			<SearchBar token={token} setAllHolidays={setAllHolidays} />
+			<SearchBar token={token} allHolidays={allHolidays} />
 
 			<Center>
 				<Box>

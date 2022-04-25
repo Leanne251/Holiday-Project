@@ -1,19 +1,20 @@
-import React from 'react';
-import { getAuth } from 'firebase/auth';
+import { useContext } from 'react';
+import { fireBaseWrapper } from '../../App';
 import { Box, Image, Badge, Button } from '@chakra-ui/react';
 
 function HolidayCard({ holidayInfo }) {
-	const auth = getAuth();
-	const userID = auth.currentUser.uid;
+	let firebase = useContext(fireBaseWrapper);
+	let userID = firebase.currentUser.uid;
 
 	console.log('holidayInfo', holidayInfo);
 
 	const sendObj = {
-		user_id: userID,
-		creation_date: new Date(),
+		userId: userID,
+		creationDate: new Date(),
 		destination: holidayInfo.destination,
 		style: holidayInfo.style,
-		hotel: holidayInfo.hotel
+		hotel: holidayInfo.hotel,
+		image: holidayInfo.image
 	};
 
 	function sendToBucketList(e) {

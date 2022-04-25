@@ -1,58 +1,27 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
-import { onAuthStateChanged, getAuth } from 'firebase/auth';
-import NavBar from './components/NavBar/NavBar';
-import LogOut from './components/LogOut/LogOut';
-import Dashboard from './components/Dashboard/Dashboard';
-import LoginPage from './components/LoginPage/LoginPage';
+import React from 'react';
+import Home from './components/Home/Home';
+import ForgotPassword from './components/LoginPage/ForgotPassword';
+import BucketList from './components/BucketList/BucketList';
+import AddAHoliday from './components/AddAHoliday/AddAHoliday';
+import { Route, Routes } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
+
+export let fireBaseWrapper = React.createContext();
 
 function App() {
 	const authentication = getAuth();
-	const [ auth, setAuth ] = useState(false || window.localStorage.getItem('auth') === 'true');
-	console.log('auth from home', auth);
-	const [ token, setToken ] = useState();
-	const [ userName, setUserName ] = useState('');
-	// const [ uid, setUid ] = useState('');
-
-	useEffect(
-		() => {
-			const unsubscribe = onAuthStateChanged(authentication, async (user) => {
-				if (user) {
-					console.log('user app', user);
-					setAuth(true);
-					window.localStorage.setItem('auth', 'true');
-					const userToken = await user.getIdToken();
-					sessionStorage.setItem('Auth Token', userToken);
-					console.log('userToken app page', userToken); // accessToken
-					console.log('user.id', user.uid); // uid
-					setToken(userToken);
-					setUserName(user.displayName);
-					// setUid(user.uid);
-				}
-			});
-			return unsubscribe;
-		},
-		[ authentication ]
-	);
 
 	return (
 		<div className="App">
-			{auth ? (
-				<div>
-					<NavBar />
-
-					<Dashboard token={token} userName={userName} />
-
-					<LogOut setAuth={setAuth} />
-				</div>
-			) : (
-				<LoginPage
-					authentication={authentication}
-					setAuth={setAuth}
-					setToken={setToken}
-					setUserName={setUserName}
-				/>
-			)}
+			<fireBaseWrapper.Provider value={authentication}>
+				<Routes>
+					<Route exact path="/forgotpassword" element={<ForgotPassword />} />
+					<Route exact path="/" element={<Home />} />
+					<Route exact path="/addaholiday" element={<AddAHoliday />} />
+					<Route exact path="/bucketlist" element={<BucketList />} />
+				</Routes>
+			</fireBaseWrapper.Provider>
 		</div>
 	);
 }
