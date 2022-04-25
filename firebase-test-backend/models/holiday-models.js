@@ -29,7 +29,7 @@ export async function addAHoliday(user_id, destination, style, hotel, imageURL) 
 		`INSERT INTO holidays (user_id, destination, style, hotel, image_URL ) VALUES ($1, $2, $3, $4, $5) RETURNING destination;`,
 		[ user_id, destination, style, hotel, imageURL ]
 	);
-
+	console.log(result.rows);
 	return result.rows;
 }
 

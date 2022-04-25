@@ -14,7 +14,7 @@ function HolidayCard({ holidayInfo }) {
 		destination: holidayInfo.destination,
 		style: holidayInfo.style,
 		hotel: holidayInfo.hotel,
-		image: holidayInfo.image
+		image: holidayInfo.image_url
 	};
 
 	function sendToBucketList(e) {
@@ -23,19 +23,18 @@ function HolidayCard({ holidayInfo }) {
 	}
 
 	async function postData() {
-		console.log('sendObj', sendObj);
 		let authToken = sessionStorage.getItem('Auth Token');
 		console.log('authToken from HolidayCard', authToken);
-		const response = await fetch('http://localhost:5000/users/', {
+		const response = await fetch('https://april-firebase.herokuapp.com/users/', {
 			method: 'POST',
 			mode: 'cors',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: 'Bearer ' + authToken
+				Authorization: 'Bearer ' + authToken,
+				'Access-Control-Allow-Origin': '*'
 			},
 			body: JSON.stringify(sendObj)
 		});
-		console.log('response to Holiday Card', response);
 	}
 
 	console.log(sendObj);
