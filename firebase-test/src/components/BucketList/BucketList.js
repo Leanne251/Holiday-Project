@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { getAuth } from 'firebase/auth';
+import React, { useEffect, useState, useContext } from 'react';
 import NavBar from '../NavBar/NavBar';
+import { fireBaseWrapper } from '../../App';
 
 function BucketList() {
 	const [ userHolidays, setUserHolidays ] = useState();
 	const [ bucketListHolidays, setbucketListHolidays ] = useState();
 
-	const auth = getAuth();
-	const userID = auth.currentUser.uid;
+	let firebase = useContext(fireBaseWrapper);
+	let userID = firebase.currentUser.uid;
 
-	console.log('uid from bucket list', auth.currentUser.uid);
 	const token = sessionStorage.getItem('Auth Token');
 	console.log('token from bucket list', token);
 
 	useEffect(
 		() => {
 			if (token && userID) {
-				getMyHolidays(userID, token);
 				getSavedHolidays(userID, token);
+				getMyHolidays(userID, token);
 			}
 		},
 		[ token, userID ]
@@ -26,28 +25,25 @@ function BucketList() {
 	async function getMyHolidays(userID, token) {
 		const response = await fetch(`http://localhost:5000/holidays/${userID}`, {
 			headers: {
-				Authorization: 'Bearer ' + token
+				Authorization: 'Bearer ' + token,
+				'Content-Type': 'application/json'
 			}
 		});
-		console.log('response', response);
-
 		const data = await response.json();
-		console.log('data', data);
 		setUserHolidays(data.payload);
 	}
 
 	async function getSavedHolidays(userID, token) {
-		const response = await fetch(`https://april-firebase.herokuapp.com/users/${userID}`, {
+		const response = await fetch(`http://localhost:5000/users/${userID}`, {
 			headers: {
-				Authorization: 'Bearer ' + token
+				Authorization: 'Bearer ' + token,
+				'Content-Type': 'application/json'
 			}
 		});
+
 		const data = await response.json();
 		setbucketListHolidays(data.payload);
 	}
-
-	console.log('userHolidays', userHolidays);
-	console.log('bucketListHolidays', bucketListHolidays);
 
 	return (
 		<div>
