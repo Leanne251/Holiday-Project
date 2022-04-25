@@ -91,6 +91,10 @@ Upload more than one image.
 Select the first image to be show on home page tile. 
 Save the other images so they can be seen on the more information page. 
 
+Allow up to 5 images to be added
+
+
+
 Allow the user to add their own notes about the holidays they have saved to bucket list. 
 
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import NavBar from '../NavBar/NavBar';
 import { fireBaseWrapper } from '../../App';
+import { Box, Heading, Center } from '@chakra-ui/react';
 
 function BucketList() {
 	const [ userHolidays, setUserHolidays ] = useState();
@@ -51,14 +52,22 @@ function BucketList() {
 	console.log('bucketListHolidays', bucketListHolidays);
 
 	return (
-		<div>
+		<Box>
 			<NavBar />
-			<h2>Trip List</h2>
-			<h4>Trips I've Submitted </h4>
+			<Center>
+				<Heading as="h2" size="lg" p={4} m={4}>
+					Trip List
+				</Heading>
+			</Center>
+			<Heading as="h4" size="md" p={4} m={4}>
+				Trips I've Submitted
+			</Heading>
 			{userHolidays ? userHolidays.map((element) => <p>{element.destination}</p>) : null}
-			<h4>Bucket List Trips</h4>
+			<Heading as="h4" size="md" p={4} m={4} p={4} m={4}>
+				Bucket List Trips
+			</Heading>
 			{bucketListHolidays ? bucketListHolidays.map((element) => <p>{element.destination}</p>) : null}
-		</div>
+		</Box>
 	);
 }
 
