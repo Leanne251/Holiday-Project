@@ -10,7 +10,7 @@ function NavBar() {
 	const isDark = colorMode === 'dark';
 	const [ display, changeDisplay ] = useState('none');
 	return (
-		<Flex w="100vw" justify="flex-end" border="1px solid black">
+		<Flex w="100vw" justify="flex-end">
 			<Flex align="center" pos="relative" right="1rem">
 				<Flex display={[ 'none', 'none', 'flex', 'flex' ]}>
 					<Button varient="link" aria-label="Home" m={2} w="100%">

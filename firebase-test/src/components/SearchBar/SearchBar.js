@@ -23,7 +23,7 @@ function SearchBar({ setAllHolidays, token }) {
 
 	return (
 		<Box>
-			<Box ml={5} w="400px" maxWidth="90%" border="1px black solid" p={4}>
+			<Box ml={5} w="400px" maxWidth="90%" p={4}>
 				<Heading as="h4" size="md">
 					Search for a destination
 				</Heading>

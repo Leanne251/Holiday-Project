@@ -30,7 +30,7 @@ function Dashboard({ token, userName }) {
 	if (userName) {
 		const display = userName.split(' ')[0];
 		return (
-			<Box w="100%" pos="relative" border="1px black solid">
+			<Box w="100%" pos="relative">
 				<Center>
 					<Heading as="h2" p={4}>
 						{display}, Your Adventure Awaits!
