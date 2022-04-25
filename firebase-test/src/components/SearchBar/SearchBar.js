@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import HolidayCard from '../HolidayCard/HolidayCard';
+import { Select, Button, Box, Heading, Center, VStack } from '@chakra-ui/react';
 
 function SearchBar({ setAllHolidays, token }) {
 	const [ searchTerm, setSearchTerm ] = useState();
@@ -21,19 +22,31 @@ function SearchBar({ setAllHolidays, token }) {
 	}
 
 	return (
-		<div>
-			<label>Search for a destination</label>
-			<br />
-			<select onChange={(e) => setSearchTerm(e.target.value)}>
-				<option value="blank" />
-				<option value="Ibiza">Ibiza</option>
-				<option value="Thailand">Thailand</option>
-				<option value="California">California</option>
-			</select>
-			{/* <input type="text" placeholder="destination" onChange={(e) => setSearchTerm(e.target.value)} /> */}
-			<button onClick={searchForHoliday}>Search</button>
-			{returnedSearchTerm ? returnedSearchTerm.map((element) => <HolidayCard holidayInfo={element} />) : <div />}
-		</div>
+		<Box>
+			<Box ml={5} w="400px" maxWidth="90%" border="1px black solid" p={4}>
+				<Heading as="h4" size="md">
+					Search for a destination
+				</Heading>
+
+				<Select m={2} width="350px" maxWidth="100%" onChange={(e) => setSearchTerm(e.target.value)}>
+					<option value="blank" />
+					<option value="Ibiza">Ibiza</option>
+					<option value="Thailand">Thailand</option>
+					<option value="California">California</option>
+				</Select>
+				{/* <input type="text" placeholder="destination" onChange={(e) => setSearchTerm(e.target.value)} /> */}
+				<Button m={2} size="md" p={2} onClick={searchForHoliday}>
+					Search
+				</Button>
+			</Box>
+			<Box>
+				{returnedSearchTerm ? (
+					returnedSearchTerm.map((element) => <HolidayCard m={4} holidayInfo={element} />)
+				) : (
+					<div />
+				)}
+			</Box>
+		</Box>
 	);
 }
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { Heading, Box, Input, Button, HStack } from '@chakra-ui/react';
 
 function SignUpPage({ authentication, setAuth, setUserName }) {
 	const [ email, setEmail ] = useState('');
@@ -32,21 +33,34 @@ function SignUpPage({ authentication, setAuth, setUserName }) {
 	}
 
 	return (
-		<div className="SignInBox">
-			<h5>Sign-Up</h5>
-			<label>Your Name:</label>
-			<input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
-			<label>Your Email:</label>
-			<input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail Address" />
-			<label>Your Password:</label>
-			<input
-				type="password"
-				value={password}
-				onChange={(e) => setPassword(e.target.value)}
-				placeholder="Password"
-			/>
-			<button onClick={handleSubmit}>SignUp</button>
-		</div>
+		<Box className="SignInBox" w="500px">
+			<Heading as="h3" size="sm" p={4}>
+				Sign-Up
+			</Heading>
+			<HStack>
+				<label>Your Name:</label>
+				<Input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
+			</HStack>
+			<HStack>
+				<label>Your Email:</label>
+				<Input
+					type="text"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+					placeholder="E-mail Address"
+				/>
+			</HStack>
+			<HStack>
+				<label>Your Password:</label>
+				<Input
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+					placeholder="Password"
+				/>
+			</HStack>
+			<Button onClick={handleSubmit}>SignUp</Button>
+		</Box>
 	);
 }
 

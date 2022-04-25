@@ -94,11 +94,28 @@ export const theme = extendTheme({
 			letterSpacing: '-2%'
 		},
 		h2: {
-			fontSize: [ '60px', '48px' ],
+			fontSize: [ '20px', 'px' ],
 			fontWeight: 'semibold',
 			lineHeight: '110%',
-			letterSpacing: '10%',
-			color: 'red.500'
+			letterSpacing: '10%'
+		},
+		h3: {
+			fontSize: [ '20px', 'px' ],
+			fontWeight: 'semibold',
+			lineHeight: '110%',
+			letterSpacing: '10%'
+		},
+		h4: {
+			fontSize: [ '20px', 'px' ],
+			fontWeight: 'semibold',
+			lineHeight: '110%',
+			letterSpacing: '10%'
+		},
+		h5: {
+			fontSize: [ '20px', 'px' ],
+			fontWeight: 'semibold',
+			lineHeight: '110%',
+			letterSpacing: '10%'
 		}
 	}
 });

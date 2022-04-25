@@ -1,5 +1,6 @@
 import React from 'react';
 import { getAuth, signOut } from 'firebase/auth';
+import { Button } from '@chakra-ui/react';
 
 function LogOut({ setAuth }) {
 	// sessionStorage.removeItem('Auth Token');
@@ -18,7 +19,11 @@ function LogOut({ setAuth }) {
 			});
 	}
 
-	return <button onClick={handleLogOut}>Log Out</button>;
+	return (
+		<Button m={4} onClick={handleLogOut}>
+			Log Out
+		</Button>
+	);
 }
 
 export default LogOut;

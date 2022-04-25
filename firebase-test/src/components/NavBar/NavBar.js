@@ -10,16 +10,16 @@ function NavBar() {
 	const isDark = colorMode === 'dark';
 	const [ display, changeDisplay ] = useState('none');
 	return (
-		<Flex w="100vw" justify="flex-end">
-			<Flex align="center" pos="relative" right="1rem" padding={2}>
+		<Flex w="100vw" justify="flex-end" border="1px solid black">
+			<Flex align="center" pos="relative" right="1rem">
 				<Flex display={[ 'none', 'none', 'flex', 'flex' ]}>
-					<Button varient="ghost" aria-label="Home" m={5} w="100%">
+					<Button varient="link" aria-label="Home" m={2} w="100%">
 						<Link to="/">Home</Link>
 					</Button>
-					<Button varient="ghost" aria-label="Add-Holiday" m={5} w="100%">
+					<Button varient="link" aria-label="Add-Holiday" m={2} w="100%">
 						<Link to="/addaholiday">Add A Holiday</Link>
 					</Button>
-					<Button varient="ghost" aria-label="Bucket-List" m={5} w="100%">
+					<Button varient="link" aria-label="Bucket-List" m={2} w="100%">
 						<Link to="/bucketlist">My Bucket List</Link>
 					</Button>
 				</Flex>
