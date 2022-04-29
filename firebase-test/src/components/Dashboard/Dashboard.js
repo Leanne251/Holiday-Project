@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import HolidayCard from '../HolidayCard/HolidayCard';
 import SearchBar from '../SearchBar/SearchBar';
 import { Heading, SimpleGrid, Center, Box } from '@chakra-ui/react';
+import LoginPage from '../LoginPage/LoginPage';
 
 function Dashboard({ token, userName }) {
 	const [ allHolidays, setAllHolidays ] = useState();
@@ -26,22 +27,33 @@ function Dashboard({ token, userName }) {
 		[ token, userName ]
 	);
 
-	console.log('dummyholidays', setAllHolidays);
+	if (userName) {
+		const display = userName.split(' ')[0];
+		return (
+			<Box w="100%" pos="relative">
+				<Center>
+					<Heading as="h2" p={4}>
+						{display}, Your Adventure Awaits!
+					</Heading>
+				</Center>
+				<SearchBar token={token} setAllHolidays={setAllHolidays} />
 
+				<Center>
+					<Box>
+						<SimpleGrid columns={[ 1, 2, 4 ]} spacing="40px" p={4}>
+							{allHolidays &&
+								allHolidays.map((holiday) => <HolidayCard key={holiday.id} holidayInfo={holiday} />)}
+						</SimpleGrid>
+					</Box>
+				</Center>
+			</Box>
+		);
+	}
 	return (
-		<Box w="100%" pos="relative">
-			<Heading as="h2">{userName}, Your Adventure Awaits!</Heading>
-			<SearchBar token={token} allHolidays={allHolidays} />
-
-			<Center>
-				<Box>
-					<SimpleGrid columns={[ 1, 4, 6 ]} spacing="40px">
-						{allHolidays &&
-							allHolidays.map((holiday) => <HolidayCard key={holiday.id} holidayInfo={holiday} />)}
-					</SimpleGrid>
-				</Box>
-			</Center>
-		</Box>
+		<div>
+			<p>Opps...something wen't wrong. Please try again to log in</p>
+			<LoginPage />
+		</div>
 	);
 }
 

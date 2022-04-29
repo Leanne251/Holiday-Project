@@ -2,14 +2,13 @@ import { useState } from 'react';
 import NavBar from '../NavBar/NavBar';
 import { useContext } from 'react';
 import { fireBaseWrapper } from '../../App';
+import { Box, Button, Heading, Center, Input } from '@chakra-ui/react';
 
 // useReducer to reduce amout of useStates for the form?
 
 function AddAHoliday() {
 	let firebase = useContext(fireBaseWrapper);
-
 	let userID = firebase.currentUser.uid;
-
 	let authToken = sessionStorage.getItem('Auth Token');
 
 	const [ previewSource, setPreviewSource ] = useState();
@@ -68,28 +67,38 @@ function AddAHoliday() {
 	}
 
 	return (
-		<div>
+		<Box>
 			<NavBar />
-			<h3>Add A Holiday</h3>
-			<h4>Had a great adventure? Share it with others!</h4>
-			<form onSubmit={sendData}>
-				<label>Destination</label>
-				<input type="text" name="destination" value={holidayData.destination} onChange={getFormData} />
-				<label>Style</label>
-				<input type="text" name="style" value={holidayData.style} onChange={getFormData} />
-				<label>Hotel</label>
-				<input type="text" name="hotel" value={holidayData.hotel} onChange={getFormData} />
-				<input
-					type="file"
-					name="image"
-					onChange={handleFileInput}
-					value={(e) => e.target.files[0]}
-					className="form-input"
-				/>
-				{previewSource && <img src={previewSource} alt="preview of selection" style={{ height: '300px' }} />}
-				<button>Post</button>
-			</form>
-		</div>
+			<Box m={4}>
+				<Center>
+					<Heading as="h2" size="lg">
+						Add A Holiday
+					</Heading>
+				</Center>
+				<Heading as="h4" size="sm" p={4}>
+					Had a great adventure? Share it with others!
+				</Heading>
+				<form onSubmit={sendData}>
+					<label>Destination</label>
+					<Input type="text" name="destination" value={holidayData.destination} onChange={getFormData} />
+					<label>Style</label>
+					<Input type="text" name="style" value={holidayData.style} onChange={getFormData} />
+					<label>Hotel</label>
+					<Input type="text" name="hotel" value={holidayData.hotel} onChange={getFormData} />
+					<Input
+						type="file"
+						name="image"
+						onChange={handleFileInput}
+						value={(e) => e.target.files[0]}
+						className="form-input"
+					/>
+					{previewSource && (
+						<img src={previewSource} alt="preview of selection" style={{ height: '300px' }} />
+					)}
+					<Button>Post</Button>
+				</form>
+			</Box>
+		</Box>
 	);
 }
 

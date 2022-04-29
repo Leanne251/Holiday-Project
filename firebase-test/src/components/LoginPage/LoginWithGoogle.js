@@ -1,4 +1,5 @@
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { Button } from '@chakra-ui/react';
 
 const provider = new GoogleAuthProvider();
 
@@ -18,5 +19,5 @@ export function LoginWithGoogle({ setAuth, authentication }) {
 		}
 	}
 
-	return <button onClick={handleGoogleSignIn}>Login With Google</button>;
+	return <Button onClick={handleGoogleSignIn}>Login With Google</Button>;
 }
