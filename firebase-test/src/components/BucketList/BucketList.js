@@ -8,10 +8,12 @@ function BucketList() {
 	const [ bucketListHolidays, setbucketListHolidays ] = useState();
 
 	let firebase = useContext(fireBaseWrapper);
+	console.log('firebase from bucketList', firebase);
 	let userID = firebase.currentUser.uid;
 
 	const token = sessionStorage.getItem('Auth Token');
 	console.log('token from bucket list', token);
+	console.log('userID from bucket list', userID);
 
 	useEffect(
 		() => {
