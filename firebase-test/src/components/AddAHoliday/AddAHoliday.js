@@ -2,7 +2,7 @@ import { useState } from 'react';
 import NavBar from '../NavBar/NavBar';
 import { useContext } from 'react';
 import { fireBaseWrapper } from '../../App';
-import { Box, Button, Heading, Center, Input } from '@chakra-ui/react';
+import { Box, Button, Heading, Center, Input, FormControl, FormLabel } from '@chakra-ui/react';
 
 // useReducer to reduce amout of useStates for the form?
 
@@ -13,7 +13,7 @@ function AddAHoliday() {
 
 	const [ previewSource, setPreviewSource ] = useState();
 	const [ holidayData, setHolidayData ] = useState({
-		user_id: userID,
+		userId: userID,
 		destination: '',
 		style: '',
 		hotel: '',
@@ -42,6 +42,7 @@ function AddAHoliday() {
 	console.log('holidayData', holidayData);
 
 	function sendData(e) {
+		console.log('hit');
 		e.preventDefault();
 		postData();
 	}
@@ -79,11 +80,11 @@ function AddAHoliday() {
 					Had a great adventure? Share it with others!
 				</Heading>
 				<form onSubmit={sendData}>
-					<label>Destination</label>
+					<FormLabel>Destination</FormLabel>
 					<Input type="text" name="destination" value={holidayData.destination} onChange={getFormData} />
-					<label>Style</label>
+					<FormLabel>Style</FormLabel>
 					<Input type="text" name="style" value={holidayData.style} onChange={getFormData} />
-					<label>Hotel</label>
+					<FormLabel>Hotel</FormLabel>
 					<Input type="text" name="hotel" value={holidayData.hotel} onChange={getFormData} />
 					<Input
 						type="file"
@@ -95,12 +96,14 @@ function AddAHoliday() {
 					{previewSource && (
 						<img src={previewSource} alt="preview of selection" style={{ height: '300px' }} />
 					)}
-					<Button>Post</Button>
+					<button>Post</button>
 				</form>
 			</Box>
 		</Box>
 	);
 }
+
+// NEED TO IMPLEMENT FORMIK!!
 
 export default AddAHoliday;
 
