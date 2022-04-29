@@ -26,7 +26,7 @@ function HolidayCard({ holidayInfo }) {
 		console.log('sendObj', sendObj);
 		let authToken = sessionStorage.getItem('Auth Token');
 		console.log('authToken from HolidayCard', authToken);
-		const response = await fetch('http://localhost:5000/users/', {
+		const response = await fetch('https://april-firebase.herokuapp.com/users/', {
 			method: 'POST',
 			mode: 'cors',
 			headers: {
