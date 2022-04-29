@@ -19,10 +19,10 @@ function HolidayCard({ holidayInfo }) {
 
 	function sendToBucketList(e) {
 		e.preventDefault();
-		postData();
+		postTheData();
 	}
 
-	async function postData() {
+	async function postTheData() {
 		console.log('sendObj', sendObj);
 		let authToken = sessionStorage.getItem('Auth Token');
 		console.log('authToken from HolidayCard', authToken);
