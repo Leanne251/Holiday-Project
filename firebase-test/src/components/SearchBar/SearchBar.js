@@ -11,7 +11,7 @@ function SearchBar({ setAllHolidays, token }) {
 	}
 
 	async function searchHolidays() {
-		const response = await fetch(`http://localhost:5000/holidays?destination=${searchTerm}`, {
+		const response = await fetch(`https://april-firebase.herokuapp.com/holidays?destination=${searchTerm}`, {
 			headers: {
 				Authorization: 'Bearer ' + token
 			}
